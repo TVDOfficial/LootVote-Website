@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
         {/* BG layers */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d0d2b] to-[#0a0a1a]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,215,0,0.05)_0%,transparent_70%)]" />
@@ -44,22 +44,21 @@ export default function Home() {
         <FloatingBlocks />
 
         {/* Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-5 w-full max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' as const }}
           >
-            {/* Mobile: stacked, Desktop: side by side */}
-            <h1 className="font-[var(--font-pixel)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-[var(--gold)] via-[#FFA500] to-[var(--gold)] bg-clip-text text-transparent animate-[glow-pulse_2s_ease-in-out_infinite] drop-shadow-[0_0_30px_rgba(255,215,0,0.3)]">
+            <h1 className="font-[var(--font-pixel)] text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-[var(--gold)] via-[#FFA500] to-[var(--gold)] bg-clip-text text-transparent">
                 Loot
               </span>
-              <span className="bg-gradient-to-r from-[var(--cyan)] via-[#00B4D8] to-[var(--cyan)] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(0,212,255,0.3)]">
+              <span className="bg-gradient-to-r from-[var(--cyan)] via-[#00B4D8] to-[var(--cyan)] bg-clip-text text-transparent">
                 Vote
               </span>
             </h1>
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
+            <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 max-w-xl mx-auto leading-relaxed">
               A premium <span className="text-white font-medium">Minecraft Towny</span> server with mcMMO, economy, quests & cross-play.
             </p>
           </motion.div>
@@ -68,27 +67,25 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col items-center gap-4 sm:gap-6"
+            className="flex flex-col items-center gap-5"
           >
             <CopyIP />
             <PlayerCount />
 
-            {/* Buttons - Stack on mobile, side by side on larger */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-2 sm:mt-4 w-full sm:w-auto px-4 sm:px-0">
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-xs sm:max-w-none mt-2">
               <Link href="/vote" className="w-full sm:w-auto">
                 <motion.button 
-                  whileHover={{ scale: 1.05 }} 
-                  whileTap={{ scale: 0.95 }} 
-                  className="btn-gold w-full sm:w-auto"
+                  whileTap={{ scale: 0.98 }} 
+                  className="btn-gold w-full"
                 >
                   Vote Now
                 </motion.button>
               </Link>
               <a href="https://mcstore.lootvote.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <motion.button 
-                  whileHover={{ scale: 1.05 }} 
-                  whileTap={{ scale: 0.95 }} 
-                  className="btn-cyan w-full sm:w-auto"
+                  whileTap={{ scale: 0.98 }} 
+                  className="btn-cyan w-full"
                 >
                   Store
                 </motion.button>
@@ -97,37 +94,37 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator - Hidden on mobile */}
+        {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
-          animate={{ y: [0, 10, 0] }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:block"
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>
       </section>
 
       {/* Features */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6">
+      <section className="relative py-16 sm:py-20 px-5">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,255,0.03)_0%,transparent_60%)]" />
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-16"
+            className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl md:text-2xl text-white mb-3 sm:mb-4">
+            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl text-white mb-3">
               Why <span className="neon-gold">LootVote</span>?
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-500 max-w-md mx-auto text-sm sm:text-base">
               Everything you need for the ultimate Minecraft experience.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -136,10 +133,10 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="glass-card p-5 sm:p-6 group cursor-default"
+                className="glass-card p-5 sm:p-6"
               >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">{f.icon}</div>
-                <h3 className="font-[var(--font-pixel)] text-xs sm:text-sm text-[var(--gold)] mb-2">{f.title}</h3>
+                <div className="text-3xl mb-3">{f.icon}</div>
+                <h3 className="font-[var(--font-pixel)] text-xs text-[var(--gold)] mb-2">{f.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -148,20 +145,20 @@ export default function Home() {
       </section>
 
       {/* How to Join */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative py-16 sm:py-20 px-5">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-16"
+            className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl md:text-2xl text-white mb-3 sm:mb-4">
+            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl text-white mb-3">
               How to <span className="neon-cyan">Join</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {steps.map((s, i) => (
               <motion.div
                 key={s.step}
@@ -172,10 +169,10 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-center"
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[var(--gold)]/20 to-[var(--cyan)]/20 border border-white/10 flex items-center justify-center">
-                  <span className="font-[var(--font-pixel)] text-[var(--gold)] text-xs sm:text-sm">{s.step}</span>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 rounded-xl bg-gradient-to-br from-[var(--gold)]/20 to-[var(--cyan)]/20 border border-white/10 flex items-center justify-center">
+                  <span className="font-[var(--font-pixel)] text-[var(--gold)] text-xs">{s.step}</span>
                 </div>
-                <h3 className="text-white font-semibold mb-1 text-sm sm:text-base">{s.title}</h3>
+                <h3 className="text-white font-semibold mb-1 text-sm">{s.title}</h3>
                 <p className="text-gray-500 text-xs sm:text-sm">{s.desc}</p>
               </motion.div>
             ))}
@@ -184,35 +181,33 @@ export default function Home() {
       </section>
 
       {/* Community CTA */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative py-16 sm:py-20 px-5">
+        <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="gradient-border"
+            className="rounded-2xl p-[1px] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan)]"
           >
-            <div className="gradient-border-inner text-center py-10 sm:py-16 px-4 sm:px-8">
-              <h2 className="font-[var(--font-pixel)] text-base sm:text-lg md:text-xl text-white mb-3 sm:mb-4">
+            <div className="bg-[#0d0d2b] rounded-2xl p-6 sm:p-8 text-center">
+              <h2 className="font-[var(--font-pixel)] text-base sm:text-lg text-white mb-3">
                 Join Our Community
               </h2>
-              <p className="text-gray-400 mb-6 sm:mb-8 max-w-lg mx-auto text-sm sm:text-base px-2 sm:px-0">
-                Connect with fellow players, get updates, participate in events.
+              <p className="text-gray-400 mb-6 text-sm sm:text-base">
+                Connect with fellow players, get updates, and participate in events.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+              <div className="flex flex-col sm:flex-row justify-center gap-3">
                 <motion.a
                   href="#"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="btn-gold inline-block"
+                  whileTap={{ scale: 0.98 }}
+                  className="btn-gold"
                 >
                   Discord
                 </motion.a>
                 <Link href="/vote">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="btn-cyan"
+                    whileTap={{ scale: 0.98 }}
+                    className="btn-cyan w-full sm:w-auto"
                   >
                     Vote for Us
                   </motion.button>
@@ -224,9 +219,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-600 text-xs sm:text-sm">
+      <footer className="py-8 px-5 border-t border-white/5">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-gray-600 text-xs">
             © 2025 LootVote. Not affiliated with Mojang or Microsoft.
           </p>
         </div>

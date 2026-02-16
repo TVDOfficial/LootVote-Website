@@ -16,14 +16,14 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 bg-gradient-to-br from-[var(--gold)] to-[var(--cyan)] rounded-lg flex items-center justify-center text-[#0a0a1a] font-bold text-sm transform group-hover:rotate-12 transition-transform">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-[var(--gold)] to-[var(--cyan)] rounded-lg flex items-center justify-center text-[#0a0a1a] font-bold text-xs sm:text-sm transform group-hover:rotate-12 transition-transform">
             L
           </div>
-          <span className="font-[var(--font-pixel)] text-sm text-[var(--gold)] tracking-wider">
+          <span className="font-[var(--font-pixel)] text-xs sm:text-sm text-[var(--gold)] tracking-wider">
             LootVote
           </span>
         </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
             href="https://mcstore.lootvote.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 btn-gold !py-2 !px-5 !text-[0.6rem] inline-block"
+            className="ml-4 btn-gold !py-2 !px-4 !text-[0.55rem] hidden lg:inline-block"
           >
             Play Now
           </a>
@@ -62,49 +62,58 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <motion.span
-            animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-            className="block w-6 h-0.5 bg-white"
+            animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+            className="block w-5 h-0.5 bg-white rounded-full"
           />
           <motion.span
             animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="block w-6 h-0.5 bg-white"
+            className="block w-5 h-0.5 bg-white rounded-full"
           />
           <motion.span
-            animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-            className="block w-6 h-0.5 bg-white"
+            animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+            className="block w-5 h-0.5 bg-white rounded-full"
           />
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - Fixed overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0a1a]/95 backdrop-blur-xl border-b border-white/5 overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden fixed inset-x-0 top-14 bg-[#0a0a1a]/98 backdrop-blur-xl border-b border-white/10"
           >
-            <div className="px-6 py-4 flex flex-col gap-2">
+            <div className="px-4 py-4 flex flex-col gap-1">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                     pathname === link.href
-                      ? 'text-[var(--gold)] bg-white/5'
-                      : 'text-gray-400 hover:text-white'
+                      ? 'text-[var(--gold)] bg-white/5 border border-[var(--gold)]/20'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="https://mcstore.lootvote.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold !py-3 !text-[0.6rem] text-center mt-2"
+                onClick={() => setMobileOpen(false)}
+              >
+                Play Now
+              </a>
             </div>
           </motion.div>
         )}
