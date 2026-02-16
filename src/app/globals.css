@@ -1,23 +1,21 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
 
 @theme {
-  --color-navy-900: #0a0a1a;
-  --color-navy-800: #0d0d2b;
-  --color-navy-700: #12123a;
-  --color-navy-600: #1a1a4e;
-  --color-gold: #FFD700;
-  --color-cyan: #00D4FF;
-  --font-pixel: "Press Start 2P", monospace;
-  --font-body: "Inter", sans-serif;
+  --color-dark: #09090b;
+  --color-dark-card: #18181b;
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+  --color-emerald: #10b981;
+  --font-inter: 'Inter', sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
 }
 
 :root {
-  --gold: #FFD700;
-  --cyan: #00D4FF;
-  --navy-900: #0a0a1a;
-  --navy-800: #0d0d2b;
-  --navy-700: #12123a;
+  --dark: #09090b;
+  --dark-card: #18181b;
+  --gold: #f59e0b;
+  --emerald: #10b981;
 }
 
 * {
@@ -31,8 +29,8 @@ html {
 }
 
 body {
-  background: var(--navy-900);
-  color: #e0e0e0;
+  background: var(--dark);
+  color: #fafafa;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
@@ -42,93 +40,9 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--navy-900);
+  background: var(--dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gold), var(--cyan));
+  background: var(--gold);
   border-radius: 3px;
-}
-
-/* Glassmorphism card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-}
-
-/* Neon glow text */
-.neon-gold {
-  color: var(--gold);
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
-}
-.neon-cyan {
-  color: var(--cyan);
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
-}
-
-/* Button styles - Mobile optimized */
-.btn-gold {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #0a0a1a;
-  font-weight: 700;
-  padding: 14px 24px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  display: inline-block;
-  text-align: center;
-  line-height: 1.5;
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-cyan {
-  background: transparent;
-  color: var(--cyan);
-  font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 10px;
-  border: 2px solid var(--cyan);
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  display: inline-block;
-  text-align: center;
-  line-height: 1.5;
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Touch feedback only, no hover on mobile */
-@media (hover: hover) {
-  .btn-gold:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-  }
-  .btn-cyan:hover {
-    background: rgba(0, 212, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-  }
-}
-
-/* Particle */
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  pointer-events: none;
 }

@@ -4,14 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "LootVote — Minecraft Towny Server",
-  description: "Join LootVote, a premium Minecraft Towny server with mcMMO, Economy, Quests, and more. Java + Bedrock cross-play. play.lootvote.com",
-  keywords: ["minecraft", "server", "towny", "mcmmo", "lootvote", "java", "bedrock"],
-  openGraph: {
-    title: "LootVote — Minecraft Towny Server",
-    description: "Join the ultimate Minecraft Towny experience. play.lootvote.com",
-    type: "website",
-  },
+  title: "LootVote - Ultimate Towny SMP",
+  description: "A premium Minecraft Towny server with mcMMO, economy, quests & cross-play. Join play.lootvote.com",
 };
 
 export default function RootLayout({
@@ -21,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-[var(--font-body)] antialiased">
+      <body className="min-h-screen bg-[#09090b] text-white antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />

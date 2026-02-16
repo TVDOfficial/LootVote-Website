@@ -1,143 +1,118 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import ParticleBackground from '@/components/ParticleBackground';
-import FloatingBlocks from '@/components/FloatingBlocks';
 import CopyIP from '@/components/CopyIP';
-import PlayerCount from '@/components/PlayerCount';
 import Link from 'next/link';
 
 const features = [
-  { icon: '⚔️', title: 'Towny', desc: 'Build towns, form nations, wage war. Claim land and protect your empire.' },
-  { icon: '📈', title: 'mcMMO', desc: 'Level up RPG skills and unlock powerful abilities.' },
-  { icon: '💰', title: 'Economy', desc: 'Jobs, player shops, auctions — build your fortune.' },
-  { icon: '🌍', title: 'Cross-Play', desc: 'Java & Bedrock players unite. Play from any device.' },
-  { icon: '🛡️', title: 'Anti-Cheat', desc: 'Protected by GrimAC. Fair gameplay guaranteed.' },
-  { icon: '📜', title: 'Quests', desc: 'Daily & weekly challenges with epic rewards.' },
+  { icon: '🏰', title: 'Towny', desc: 'Build thriving towns, form powerful nations, and conquer territory.' },
+  { icon: '⚔️', title: 'mcMMO', desc: 'Level up skills, unlock abilities, and become a master.' },
+  { icon: '💎', title: 'Economy', desc: 'Trade, sell, and build your wealth in a player-driven market.' },
+  { icon: '🌐', title: 'Cross-Play', desc: 'Play with friends on Java, Bedrock, console, or mobile.' },
+  { icon: '🛡️', title: 'Anti-Cheat', desc: 'Fair gameplay protected by advanced anti-cheat systems.' },
+  { icon: '📜', title: 'Quests', desc: 'Complete daily challenges and earn epic rewards.' },
 ];
 
 const steps = [
-  { step: '01', title: 'Open Minecraft', desc: 'Launch Java (1.21+) or Bedrock' },
-  { step: '02', title: 'Add Server', desc: 'Go to Multiplayer → Add Server' },
-  { step: '03', title: 'Enter IP', desc: 'Type play.lootvote.com' },
-  { step: '04', title: 'Play!', desc: 'Start your adventure' },
+  { num: '01', title: 'Launch Minecraft', desc: 'Java 1.21+ or Bedrock Edition' },
+  { num: '02', title: 'Add Server', desc: 'Go to Multiplayer → Add Server' },
+  { num: '03', title: 'Enter IP', desc: 'Type: play.lootvote.com' },
+  { num: '04', title: 'Start Playing', desc: 'Join and begin your adventure' },
 ];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' as const },
-  }),
-};
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
-        {/* BG layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0d0d2b] to-[#0a0a1a]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,215,0,0.05)_0%,transparent_70%)]" />
-        <ParticleBackground />
-        <FloatingBlocks />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-[#09090b]">
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-emerald-500/5" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-amber-500/10 rounded-full blur-[120px] opacity-50" />
+        </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-5 w-full max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' as const }}
-          >
-            <h1 className="font-[var(--font-pixel)] text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-[var(--gold)] via-[#FFA500] to-[var(--gold)] bg-clip-text text-transparent">
-                Loot
-              </span>
-              <span className="bg-gradient-to-r from-[var(--cyan)] via-[#00B4D8] to-[var(--cyan)] bg-clip-text text-transparent">
-                Vote
-              </span>
-            </h1>
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 max-w-xl mx-auto leading-relaxed">
-              A premium <span className="text-white font-medium">Minecraft Towny</span> server with mcMMO, economy, quests & cross-play.
-            </p>
-          </motion.div>
-
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col items-center gap-5"
+            transition={{ duration: 0.6 }}
           >
-            <CopyIP />
-            <PlayerCount />
+            {/* Logo */}
+            <h1 className="font-['Press_Start_2P'] text-2xl sm:text-3xl md:text-4xl mb-4 tracking-tight">
+              <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+                LootVote
+              </span>
+            </h1>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-xs sm:max-w-none mt-2">
+            {/* Tagline */}
+            <p className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3">
+              The Ultimate Towny SMP Experience
+            </p>
+            <p className="text-zinc-400 text-sm sm:text-base max-w-md mx-auto mb-8">
+              A premium Minecraft server featuring mcMMO, economy, quests, and seamless cross-play.
+            </p>
+
+            {/* Server IP */}
+            <div className="mb-6">
+              <CopyIP />
+            </div>
+
+            {/* Player Count */}
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-zinc-400 text-sm">
+                <span className="text-emerald-400 font-semibold">0</span> players online
+              </span>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/vote" className="w-full sm:w-auto">
-                <motion.button 
-                  whileTap={{ scale: 0.98 }} 
-                  className="btn-gold w-full"
-                >
-                  Vote Now
-                </motion.button>
+                <button className="w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-3.5 px-8 rounded-xl text-sm uppercase tracking-wide transition-all">
+                  Start Playing
+                </button>
               </Link>
-              <a href="https://mcstore.lootvote.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <motion.button 
-                  whileTap={{ scale: 0.98 }} 
-                  className="btn-cyan w-full"
-                >
-                  Store
-                </motion.button>
+              <a href="#features" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto bg-transparent border border-zinc-700 hover:border-zinc-500 text-white font-semibold py-3.5 px-8 rounded-xl text-sm uppercase tracking-wide transition-all">
+                  Learn More
+                </button>
               </a>
             </div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:block"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
       </section>
 
       {/* Features */}
-      <section className="relative py-16 sm:py-20 px-5">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,255,0.03)_0%,transparent_60%)]" />
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section id="features" className="py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-12"
+            className="text-center mb-12"
           >
-            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl text-white mb-3">
-              Why <span className="neon-gold">LootVote</span>?
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              Why Choose <span className="text-amber-500">LootVote</span>?
             </h2>
-            <p className="text-gray-500 max-w-md mx-auto text-sm sm:text-base">
-              Everything you need for the ultimate Minecraft experience.
-            </p>
+            <p className="text-zinc-400">Everything you need for the ultimate Minecraft experience.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                variants={fadeUp}
-                className="glass-card p-5 sm:p-6"
+                transition={{ delay: i * 0.05 }}
+                className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-colors"
               >
                 <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="font-[var(--font-pixel)] text-xs text-[var(--gold)] mb-2">{f.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-2">{f.title}</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -145,35 +120,34 @@ export default function Home() {
       </section>
 
       {/* How to Join */}
-      <section className="relative py-16 sm:py-20 px-5">
+      <section className="py-20 px-4 sm:px-6 bg-zinc-900/30">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-12"
+            className="text-center mb-12"
           >
-            <h2 className="font-[var(--font-pixel)] text-lg sm:text-xl text-white mb-3">
-              How to <span className="neon-cyan">Join</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              How to <span className="text-emerald-500">Join</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {steps.map((s, i) => (
               <motion.div
-                key={s.step}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
+                key={s.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                variants={fadeUp}
+                transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 rounded-xl bg-gradient-to-br from-[var(--gold)]/20 to-[var(--cyan)]/20 border border-white/10 flex items-center justify-center">
-                  <span className="font-[var(--font-pixel)] text-[var(--gold)] text-xs">{s.step}</span>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-amber-500/20 to-emerald-500/20 border border-zinc-800 flex items-center justify-center">
+                  <span className="font-['Press_Start_2P'] text-amber-500 text-xs">{s.num}</span>
                 </div>
                 <h3 className="text-white font-semibold mb-1 text-sm">{s.title}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm">{s.desc}</p>
+                <p className="text-zinc-500 text-xs">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -181,51 +155,38 @@ export default function Home() {
       </section>
 
       {/* Community CTA */}
-      <section className="relative py-16 sm:py-20 px-5">
+      <section className="py-20 px-4 sm:px-6">
         <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl p-[1px] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan)]"
+            className="rounded-2xl p-[1px] bg-gradient-to-r from-amber-500 to-emerald-500"
           >
-            <div className="bg-[#0d0d2b] rounded-2xl p-6 sm:p-8 text-center">
-              <h2 className="font-[var(--font-pixel)] text-base sm:text-lg text-white mb-3">
+            <div className="bg-[#09090b] rounded-2xl p-8 text-center">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
                 Join Our Community
               </h2>
-              <p className="text-gray-400 mb-6 text-sm sm:text-base">
+              <p className="text-zinc-400 mb-6 text-sm">
                 Connect with fellow players, get updates, and participate in events.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3">
-                <motion.a
+                <a
                   href="#"
-                  whileTap={{ scale: 0.98 }}
-                  className="btn-gold"
+                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-3 px-6 rounded-xl text-sm uppercase tracking-wide transition-all"
                 >
                   Discord
-                </motion.a>
+                </a>
                 <Link href="/vote">
-                  <motion.button
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-cyan w-full sm:w-auto"
-                  >
+                  <button className="w-full sm:w-auto border border-zinc-700 hover:border-zinc-500 text-white font-semibold py-3 px-6 rounded-xl text-sm uppercase tracking-wide transition-all">
                     Vote for Us
-                  </motion.button>
+                  </button>
                 </Link>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-5 border-t border-white/5">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-600 text-xs">
-            © 2025 LootVote. Not affiliated with Mojang or Microsoft.
-          </p>
-        </div>
-      </footer>
     </>
   );
 }

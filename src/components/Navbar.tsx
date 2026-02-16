@@ -13,107 +13,78 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-[var(--gold)] to-[var(--cyan)] rounded-lg flex items-center justify-center text-[#0a0a1a] font-bold text-xs sm:text-sm transform group-hover:rotate-12 transition-transform">
-            L
+    <nav className="fixed top-0 w-full z-50 bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-black font-bold text-sm">
+              L
+            </div>
+            <span className="font-['Press_Start_2P'] text-amber-500 text-xs tracking-tight">
+              LootVote
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname === link.href
+                    ? 'text-white bg-zinc-800'
+                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
-          <span className="font-[var(--font-pixel)] text-xs sm:text-sm text-[var(--gold)] tracking-wider">
-            LootVote
-          </span>
-        </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-1">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`relative px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                pathname === link.href
-                  ? 'text-[var(--gold)]'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              {pathname === link.href && (
-                <motion.div
-                  layoutId="nav-active"
-                  className="absolute inset-0 bg-white/5 rounded-lg border border-[var(--gold)]/20"
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{link.label}</span>
-            </Link>
-          ))}
-          <a
-            href="https://mcstore.lootvote.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4 btn-gold !py-2 !px-4 !text-[0.55rem] hidden lg:inline-block"
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 -mr-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
           >
-            Play Now
-          </a>
+            <div className="w-5 h-4 flex flex-col justify-between">
+              <span className={`block h-0.5 bg-white transition-transform ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+              <span className={`block h-0.5 bg-white transition-opacity ${isOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 bg-white transition-transform ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+            </div>
+          </button>
         </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block w-5 h-0.5 bg-white rounded-full"
-          />
-          <motion.span
-            animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="block w-5 h-0.5 bg-white rounded-full"
-          />
-          <motion.span
-            animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block w-5 h-0.5 bg-white rounded-full"
-          />
-        </button>
       </div>
 
-      {/* Mobile menu - Fixed overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden fixed inset-x-0 top-14 bg-[#0a0a1a]/98 backdrop-blur-xl border-b border-white/10"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#09090b] border-b border-zinc-800 overflow-hidden"
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
+            <div className="px-4 py-3 space-y-1">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg text-sm font-medium ${
                     pathname === link.href
-                      ? 'text-[var(--gold)] bg-white/5 border border-[var(--gold)]/20'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'text-white bg-zinc-800'
+                      : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://mcstore.lootvote.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold !py-3 !text-[0.6rem] text-center mt-2"
-                onClick={() => setMobileOpen(false)}
-              >
-                Play Now
-              </a>
             </div>
           </motion.div>
         )}
