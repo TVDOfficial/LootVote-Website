@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-navy-900: #0a0a1a;
+  --color-navy-800: #0d0d2b;
+  --color-navy-700: #12123a;
+  --color-navy-600: #1a1a4e;
+  --color-gold: #FFD700;
+  --color-cyan: #00D4FF;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+:root {
+  --gold: #FFD700;
+  --cyan: #00D4FF;
+  --navy-900: #0a0a1a;
+  --navy-800: #0d0d2b;
+  --navy-700: #12123a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-900);
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-900);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--cyan));
+  border-radius: 4px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1), 0 0 0 1px rgba(255, 215, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--gold), var(--cyan));
+}
+.gradient-border-inner {
+  background: var(--navy-800);
+  border-radius: 15px;
+  padding: 24px;
+}
+
+/* Neon glow text */
+.neon-gold {
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.2);
+}
+.neon-cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+/* Button styles */
+.btn-gold {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #0a0a1a;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+.btn-gold:hover::before {
+  left: 100%;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-cyan {
+  background: transparent;
+  color: var(--cyan);
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: 2px solid var(--cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+}
+.btn-cyan:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+/* Minecraft block */
+.mc-block {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(45deg);
+}
+.mc-block-face {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(0,0,0,0.3);
+  image-rendering: pixelated;
+}
+
+/* Particle */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
