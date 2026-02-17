@@ -8,7 +8,7 @@ const footerLinks = [
     links: [
       { label: 'Home', href: '/' },
       { label: 'Vote', href: '/vote' },
-      { label: 'Store', href: '/store' },
+      { label: 'Store', href: 'https://lootvote.buycraft.net/' },
       { label: 'Rules', href: '/rules' },
     ],
   },

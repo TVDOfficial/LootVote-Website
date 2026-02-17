@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/vote', label: 'Vote' },
-  { href: '/store', label: 'Store' },
+  { href: 'https://lootvote.buycraft.net/', label: 'Store' },
   { href: '/rules', label: 'Rules' },
 ];
 
@@ -26,16 +26,14 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'py-3' : 'py-5'
-      }`}
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          className={`flex items-center justify-between h-16 px-6 rounded-2xl transition-all duration-300 ${
-            scrolled ? 'glass-darker shadow-2xl' : 'bg-transparent'
-          }`}
+        <div
+          className={`flex items-center justify-between h-16 px-6 rounded-2xl transition-all duration-300 ${scrolled ? 'glass-darker shadow-2xl' : 'bg-transparent'
+            }`}
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
@@ -53,18 +51,17 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                  pathname === link.href
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${pathname === link.href
                     ? 'text-primary bg-primary/10'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
             ))}
-            
+
             <div className="h-6 w-[1px] bg-zinc-800 mx-2" />
-            
+
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -106,11 +103,10 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
-                    pathname === link.href
+                  className={`block px-4 py-3 rounded-xl text-base font-semibold transition-all ${pathname === link.href
                       ? 'text-primary bg-primary/10'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </Link>

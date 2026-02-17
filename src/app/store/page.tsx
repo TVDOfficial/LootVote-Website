@@ -25,7 +25,7 @@ export default function StorePage() {
             Support the server and unlock exclusive perks, ranks, and cosmetics.
           </p>
           <motion.a
-            href="https://mcstore.lootvote.com"
+            href="https://lootvote.buycraft.net/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold py-3.5 px-8 rounded-xl text-sm uppercase tracking-wide transition-all"
@@ -39,7 +39,7 @@ export default function StorePage() {
           {categories.map((cat, i) => (
             <motion.a
               key={cat.name}
-              href="https://mcstore.lootvote.com"
+              href="https://lootvote.buycraft.net/"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
